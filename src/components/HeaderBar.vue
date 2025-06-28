@@ -125,6 +125,10 @@ import ShoppingCart from './ShoppingCart.vue'
 }
 
 @media (850px < width <= 1450px) {
+  .bar {
+    display: none;
+  }
+
   .headerbar {
     height: 120px;
   }

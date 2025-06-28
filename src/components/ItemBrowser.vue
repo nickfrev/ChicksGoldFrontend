@@ -223,11 +223,13 @@ for (let i = 0; i < 208; i++) {
 <template>
   <h1>Condimentum consectetur</h1>
   <div class="search-control">
+    <!-- Game filter dropdown -->
     <div class="search-dropdowns">
       <IconDropDown
         class="game-filter-dropdown glass"
         title="Select a Game"
         :options="[
+          {},
           { value: 'gmod', label: 'GMod' },
           { value: 'halo', label: 'Halo' },
           { value: 'runescape', label: 'Runescape' },
@@ -239,6 +241,7 @@ for (let i = 0; i < 208; i++) {
       </IconDropDown>
     </div>
 
+    <!-- Search Bar -->
     <div class="search-bar glass">
       <div class="magnifying-glass">
         <MagnifyIcon />
@@ -247,36 +250,38 @@ for (let i = 0; i < 208; i++) {
         <input type="text" placeholder="Search" class="search-input" />
       </div>
     </div>
+
+    <!-- Side Dropdowns -->
+    <div class="search-dropdowns">
+      <IconDropDown
+        class="side-filter-dropdown glass"
+        title="Price"
+        :options="[
+          { value: 'all', label: 'All', default: true },
+          { value: 'cheap', label: 'Cheapo' },
+          { value: 'expensive', label: 'Expensivo' },
+        ]"
+      >
+        <template v-slot:icon>
+          <SackIcon class="side-icon" />
+        </template>
+      </IconDropDown>
+      <IconDropDown
+        class="side-filter-dropdown glass"
+        title="Item Type"
+        :options="[
+          { value: 'all', label: 'All', default: true },
+          { value: 'weapon', label: 'Weapon' },
+          { value: 'armor', label: 'Armor' },
+        ]"
+      >
+        <template v-slot:icon>
+          <FeatherIcon class="side-icon" />
+        </template>
+      </IconDropDown>
+    </div>
   </div>
 
-  <div class="search-dropdowns">
-    <IconDropDown
-      class="side-filter-dropdown glass"
-      title="Price"
-      :options="[
-        { value: 'all', label: 'All', default: true },
-        { value: 'cheap', label: 'Cheapo' },
-        { value: 'expensive', label: 'Expensivo' },
-      ]"
-    >
-      <template v-slot:icon>
-        <SackIcon class="side-icon" />
-      </template>
-    </IconDropDown>
-    <IconDropDown
-      class="side-filter-dropdown glass"
-      title="Item Type"
-      :options="[
-        { value: 'all', label: 'All', default: true },
-        { value: 'weapon', label: 'Weapon' },
-        { value: 'armor', label: 'Armor' },
-      ]"
-    >
-      <template v-slot:icon>
-        <FeatherIcon class="side-icon" />
-      </template>
-    </IconDropDown>
-  </div>
   <ItemBrowserResults :showAmount="20" :items="items" />
 </template>
 
@@ -288,6 +293,10 @@ h1 {
 .search-control {
   margin: 15px 0 20px 0;
   display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
 }
 
 .sword-icon {
@@ -304,6 +313,11 @@ h1 {
 
 .search-dropdowns {
   display: inline-block;
+  flex: 1;
+}
+
+.side-filter-dropdown {
+  width: 150px;
 }
 
 .game-filter-dropdown {
@@ -314,11 +328,11 @@ h1 {
 .search-bar {
   display: inline-block;
   position: relative;
-  width: 300px;
+  min-width: 300px;
   height: 50px;
   border-radius: 5px;
-  margin-left: 10px;
   line-height: 50px;
+  flex: 2;
 }
 
 .magnifying-glass {
@@ -336,6 +350,7 @@ h1 {
 
 .search-input-container {
   display: inline-block;
+
   position: absolute;
   left: 50px;
   right: 0px;
@@ -357,5 +372,27 @@ h1 {
   color: rgb(187, 187, 187);
   font-size: 0.9rem;
   opacity: 1; /* Firefox */
+}
+
+@media (width <= 1260px) {
+  .search-bar {
+    order: -1;
+    width: 100%;
+    flex: auto;
+  }
+
+  .search-dropdowns {
+    flex: auto;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .game-filter-dropdown {
+    width: 100%;
+  }
+
+  .side-filter-dropdown {
+    width: 50%;
+  }
 }
 </style>

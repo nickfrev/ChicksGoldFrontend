@@ -6,6 +6,7 @@ import ChevronLeftIcon from 'vue-material-design-icons/ChevronLeft.vue'
 import TuneIcon from 'vue-material-design-icons/Tune.vue'
 import { ref, computed } from 'vue'
 const currentPage = ref(0)
+const sortFilter = ref('featured')
 const maxDisplayedPages = 9
 
 const props = defineProps<{
@@ -63,6 +64,34 @@ const pageArray = computed(() => {
 
   return returnPages
 })
+
+function handleChange(event) {
+  console.log(event)
+  const value = event?.value
+  if (!value) {
+    return
+  }
+
+  sortFilter.value = value
+}
+
+const filteredItems = computed(() => {
+  const items = [...props.items]
+  if (sortFilter.value === 'price') {
+    items.sort(
+      (a, b) => (a.isOnSale ? a.salePrice : a.price) - (b.isOnSale ? b.salePrice : b.price),
+    )
+  } else if (sortFilter.value === 'onsale') {
+    items.sort(
+      (a, b) => (b.isOnSale ? b.price - b.salePrice : 0) - (a.isOnSale ? a.price - a.salePrice : 0),
+    )
+  } else if (sortFilter.value === 'chickpick') {
+    items.sort((a, b) => (b.quantity > a.quantity ? 1 : -1))
+  } else if (sortFilter.value === 'featured') {
+    items.sort((a, b) => (b.name < a.name ? 1 : -1))
+  }
+  return items
+})
 </script>
 
 <template>
@@ -74,18 +103,22 @@ const pageArray = computed(() => {
         title="Sort By"
         :options="[
           { value: 'featured', label: 'Featured', default: true },
-          { value: 'onsale', label: 'On Sale' },
+          { value: 'price', label: 'Price', default: true },
+          { value: 'onsale', label: 'Best Discounts' },
           { value: 'chickpick', label: 'Chicks Gold Pick', icon: '🐥' },
         ]"
+        @change="handleChange"
       >
         <template v-slot:icon>
           <TuneIcon class="tune-icon" />
         </template>
       </IconDropDown>
     </div>
+
+    <!-- Item Cards -->
     <div class="item-browser">
       <ItemBrowserCard
-        v-for="item in items.slice(
+        v-for="item in filteredItems.slice(
           currentPage * props.showAmount,
           currentPage * props.showAmount + props.showAmount,
         )"
@@ -93,6 +126,8 @@ const pageArray = computed(() => {
         :key="item.id"
       />
     </div>
+
+    <!-- Page Controlls -->
     <div class="page-controls">
       <button
         class="page-button direction-button"

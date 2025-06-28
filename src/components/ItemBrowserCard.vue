@@ -29,8 +29,9 @@ defineProps<{
       <span>Sold Out</span>
     </div>
 
+    <!-- Quantity Selector -->
     <div class="quantity-selector">
-      <input type="number" min="1" :max="item.quantity" value="1" />
+      <input type="number" min="1" :max="item.quantity" value="1" :disabled="item.quantity <= 0" />
     </div>
 
     <!-- Item Image -->
@@ -61,7 +62,7 @@ defineProps<{
       <button class="button-details">DETAILS</button>
       <button class="button-add">
         ADD
-        <div class="button-add-icon"><CartIcon size="18" /></div>
+        <div class="button-add-icon"><CartIcon :size="18" /></div>
       </button>
     </div>
   </div>
@@ -130,23 +131,16 @@ defineProps<{
   color: white;
 }
 
+.quantity-selector input:disabled {
+  opacity: 0.5;
+}
+
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
-  /* -webkit-appearance: none; */
+  -webkit-appearance: none;
   background: #373e54;
   opacity: 1;
 }
-
-input[type='number']::-webkit-outer-spin-button::after,
-input[type='number']::-webkit-inner-spin-button::after {
-  content: '^';
-}
-
-/* input[type='number']::-webkit-outer-spin-button {
-  background-color: red;
-  color: green;
-  content: 'a';
-} */
 
 .item-image {
   width: 55px;

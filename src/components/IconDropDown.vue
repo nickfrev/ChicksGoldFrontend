@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const emit = defineEmits(['change'])
+
 const internalValue = ref<string | null>(null)
 const internalLabel = ref<string | null>(null)
 
@@ -34,6 +36,17 @@ function changeHandler(event: Event) {
     internalValue.value = null
     internalLabel.value = null
   }
+
+  event.preventDefault()
+  event.stopPropagation()
+  emit('change', {
+    value: internalValue.value,
+    label: internalLabel.value,
+  })
+  // this.$emit('change', {
+  //   value: internalValue.value,
+  //   label: internalLabel.value,
+  // })
 }
 
 if (props.value) {
@@ -120,9 +133,6 @@ select > button {
   line-height: 45px;
   font-size: 0.9rem;
   color: white;
-}
-
-.value-display {
 }
 
 .selected-value {

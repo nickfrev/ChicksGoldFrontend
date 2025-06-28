@@ -4,7 +4,7 @@ import CartIcon from 'vue-material-design-icons/Cart.vue'
 
 <template>
   <button>
-    <CartIcon size="18" />
+    <CartIcon :size="18" />
     <span class="text">Cart (5)</span>
   </button>
 </template>

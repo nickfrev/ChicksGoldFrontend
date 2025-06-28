@@ -1,6 +1,10 @@
 # ChicksGoldFrontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Front-end interview question for Chicks Gold. Displays a search page with no server connections.
+
+# Interview Notes
+
+- The interactable elements of the page are the "Sort By" dropdown and the pagination controller.
 
 ## Recommended IDE Setup
 
@@ -30,12 +34,6 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
