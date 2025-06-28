@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HeaderBar from './components/HeaderBar.vue'
+import ItemBrowser from './components/ItemBrowser.vue'
 import FooterBar from './components/FooterBar.vue'
 </script>
 
@@ -7,70 +8,7 @@ import FooterBar from './components/FooterBar.vue'
   <HeaderBar class="sticky" />
   <img class="background" src="@/assets/images/gameBackground.jpg" alt="Background Image" />
   <div class="content">
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
-    <div>blah</div>
+    <ItemBrowser class="item-browser" />
   </div>
   <FooterBar />
 </template>
@@ -92,7 +30,8 @@ import FooterBar from './components/FooterBar.vue'
 }
 
 .content {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
+  padding-top: 120px;
 }
 </style>

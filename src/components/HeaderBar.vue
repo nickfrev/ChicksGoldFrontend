@@ -97,6 +97,8 @@ import ShoppingCart from './ShoppingCart.vue'
   border-bottom: 1px solid #4c6085;
   height: 83px;
   width: 100%;
+
+  z-index: 1000;
 }
 
 .headerbar > .logo {

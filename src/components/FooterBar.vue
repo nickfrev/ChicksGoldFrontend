@@ -67,6 +67,7 @@ import StarBoxIcon from 'vue-material-design-icons/StarBox.vue'
   width: 100%;
   background-color: #303141;
   color: white;
+  margin-top: 90px;
 }
 
 .centerSizer {

@@ -4,7 +4,7 @@ import CartIcon from 'vue-material-design-icons/Cart.vue'
 
 <template>
   <button>
-    <CartIcon />
+    <CartIcon size="18" />
     <span class="text">Cart (5)</span>
   </button>
 </template>
@@ -25,7 +25,6 @@ button {
   font-weight: 500;
   height: 40px;
   vertical-align: middle;
-  margin-top: -3px;
 }
 
 button:hover {
@@ -33,8 +32,9 @@ button:hover {
 }
 
 .text {
+  margin-left: 3px;
   margin-right: 10px;
-  margin-top: -7px;
+  margin-top: 0px;
   vertical-align: middle;
   display: inline-block;
   height: 100%;
